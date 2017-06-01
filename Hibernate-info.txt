@@ -77,13 +77,32 @@ session.flush ?
 
 Caching in data
 1st level cache
+Session cache. It is enabled by default. Objects stored in the 1st level cache are accessible only in the session in which they are stored.
+always 1st level cache always be considered first before any attempt to made to find object in 2nd level cache.
 
 2nd level cache
-its configurable according to per class
+its configurable according to per class. or per collection basis. and its mainly responsible for caching objects across sessions.
 
+4 cache strategy available.
+1) Transactional
+2) Read write 
+3) Non 
+4) Read only 
+
+To enable 2nd level cache you need to below jars
+ehcache-core.jar
+hibernate-ehcache.jar
+
+then ehcache.xml file should be present.
+
+In the property file you need to mention the below properties.
 <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>  
 <property name="hibernate.cache.use_second_level_cache">true</property>  
 
+-----------------------
+@PersistenceContext
+ 
+ 
 defining custom type
 
 @DescriminatorValue
@@ -114,17 +133,6 @@ MCategory.java
 ------------------------
 JPA Entity manager
 
-EntityManager manager = JPAUtil.getEntityManager();
-	
-				manager.getTransaction().begin();
-				User obj = new User();
-				obj.setId(11);
-				obj.setName("suresh");
-				manager.persist(obj);
-				manager.getTransaction().commit();
-				
-				manager.close();
-			
 		
 ================== Query =================
 
@@ -132,5 +140,14 @@ org.hibernate.ejb.HibernatePersistence
 adding model classes in xm file
 Detached Entity.
 PersistenceContext
+
+=========================================
+	URL
+http://howtodoinjava.com/jpa/spring-hibernate-jpa-configuration-example/	
+
+		Check
+
+@PersistenceContext
+EntitManager in jpa.		
 
 
