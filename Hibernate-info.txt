@@ -152,6 +152,16 @@ MCategory.java
 		private MProduct products;
 		
 ------------------------
+Lazy loading
+
+@OneToMany and @ManyToMany associations are defaulted to LAZY loading; and @OneToOne and @ManyToOne are defaulted to EAGER loading
+
+example
+MCategory.java
+@OneToMany(mappedBy="category",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+		private Set<MProduct> products;
+
+-------------------
 JPA Entity manager
 
 		
