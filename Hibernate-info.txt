@@ -1,11 +1,17 @@
-Overall concepts
-batch processing
-caching levels and thier purpose
-hibernate inheritance
-configure sessions.
+Building session factory
+Earlier using AnnotationConfiguration (Now its deprecated.)
 
+In V 4.X
+Configuration configuration = new Configuration().configure(HibernateUtil.class.getResource("/hibernate.cfg.xml"));
+	           
+				StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder();
+	            serviceRegistryBuilder.applySettings(configuration.getProperties());
+	            ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
+	            SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+---------------
+Session
+Hibernate Session is the interface between java application and hibernate framework
 
-Hibernate info
 
 Saving the object
 
@@ -16,14 +22,29 @@ saves the object. does not return any value. ie primary key value.
 saves the object. it returns the primary key column value 
 
 3) saveOrUpdate(obj)
-----------
-Transient data, persistent data
 
+To save persistent entity in another session, we can use saveOrUpdate method.
+To save the detached object in a different session, we need to use this method.
+We can use this method to save transient object too.
+
+refresh
+Sometimes we face situation where we application database is modified with some external application/agent and thus corresponding 
+hibernate entity in your application actually becomes out of sync with it’s database representation i.e. having old data. 
+In this case, you can use session.refresh() method to re-populate the entity with latest data available in database. 
+example:
+sessionTwo.refresh(obj);
+----------
+
+merge
+It updates the database with values from a detached entity.
+Merging is performed when you desire to have a detached entity changed to persistent state again	
+
+==================
+Transient data, persistent data
 
 Transient data:
 We have created the object. set the data to it. Update the database row. No need to select the object from the db for updating.
 session.update(Obj);
-
 ------
 check session.merge(Obj);
 
@@ -150,4 +171,11 @@ http://howtodoinjava.com/jpa/spring-hibernate-jpa-configuration-example/
 @PersistenceContext
 EntitManager in jpa.		
 
+----------------------------
+
+Overall concepts
+batch processing
+caching levels and thier purpose
+hibernate inheritance
+configure sessions.
 
