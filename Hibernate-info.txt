@@ -174,6 +174,7 @@ PersistenceContext
 
 =========================================
 	URL
+https://stackoverflow.com/questions/12337504/hibernatetransactionmanager-or-jpatransactionmanager
 http://howtodoinjava.com/jpa/spring-hibernate-jpa-configuration-example/	
 
 		Check
