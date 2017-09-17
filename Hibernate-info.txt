@@ -190,3 +190,94 @@ caching levels and thier purpose
 hibernate inheritance
 configure sessions.
 
+============================
+
+@Id
+@Column(name="user_id")
+private int id;
+		
+@Column(name="user_name")
+private String name;
+
+Note: we can write the annotation on top of getter methods.
+
+=====================================
+@Entity(name="user_details")  // Here entity name is user_details
+public class UserDetails {
+
+
+@Entity
+@Table((name="user_details")  // Here table name is user_details
+public class UserDetails {
+
+Difference between two
+Hibernate tutorial -05 : more annotation
+
+========================================
+@Transient
+@Column(name="user_name")
+private String name;
+
+Use of @Transient
+In this case, it wont write the value to the db.
+
+=========================================
+
+@Lob
+Hibernate tutorial -05 : more annotation
+=========================================
+
+Primary keys in hibernate
+
+@Id
+Its a primary key. 
+
+Surrogate key
+It acts as primarykey. but it doesnot have any business significance.
+
+Natural keys
+these column has business purpose and its unique. example: email id or login id
+
+=====================
+
+@Id
+@GeneratedValue
+private int id;
+
+@GeneratedValue : If you use this one, no need to give value to this column. 
+Hibernate will automatically generate the value.
+
+==========================================
+
+Entity type object, Value type objects
+
+
+@Embedded
+private Address address;
+Note: this anootation is not compulsory.
+
+
+@AttributeOverrides
+http://stackoverflow.com/questions/4432748/what-does-attributeoverride-mean
+
+@Embedded
+@AttributeOverrides({
+@AttributeOverride(name="city",column=@Column(name="home_city123")),
+@AttributeOverride(name="state",column=@Column(name="home_state123"))
+})
+private Address address;
+
+By using the @AttributeOverride you're saying 'ignore what other information you have with regard to what column it is stored in, and use the one i specify here'.
+
+
+@EmbeddedId
+This annotation is used for primary key, which is generated using other class object.
+=============================================
+		Saving collection
+
+
+
+=============================================
+		Check
+@GeneratedValue(strategy=GenerationType.AUTO) and other options.
+
