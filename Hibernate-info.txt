@@ -1,3 +1,13 @@
+Task
+
+In one to many, one to many check varoious annotations
+
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+Here it creates single table only.
+table vehicle will have new column DTYPE which represents the class name.
+
+-------------------------
+
 Building session factory
 Earlier using AnnotationConfiguration (Now its deprecated.)
 
