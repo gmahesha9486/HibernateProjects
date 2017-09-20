@@ -1,6 +1,6 @@
 Task
 
-In one to many, one to many check varoious annotations
+In one to many, one to one check varoious annotations
 
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 Here it creates single table only.
