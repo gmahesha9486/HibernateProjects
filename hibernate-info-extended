@@ -32,3 +32,5 @@ exit;
 
 ======================================
 
+Hibernate session is not closed. what will happen?
+simultaneous insertion to hibernate. which is inserted first.
