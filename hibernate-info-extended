@@ -1,0 +1,34 @@
+2nd level cache is from 4 vendors.
+Easy Hibernate [EHCache] Cache from hibernate framework
+Open Symphony [OS] cache from Open Symphony
+SwarmCache
+TreeCache from JBoss
+
+4 cache strategy available.
+1) Read only : used for persistent objects that will always read but never updated
+2) Read write : used for persistent objects that can be updated by the hibernate application. However if the data is 
+				updated either through back end or other applications, then there is no way hibernate will know about it and data might be stale
+3) Non restricted read  write
+4) Transactional
+
+Example
+
+@Cacheable
+@Cache(usage= CacheConcurrencyStrategy.READ_ONLY)
+public class MProduct {
+... }
+======== DB derby =========
+Open derby db in cmd
+ij
+
+connect to the existing db
+CONNECT 'jdbc:derby:D:\\Mahesh\Projects\Derby\DerbyData\demo';
+
+create a database using cmd
+CONNECT 'jdbc:derby:D:\\Mahesh\Projects\Derby\DerbyData\demo;create=true';
+
+exit the connection
+exit;
+
+======================================
+
